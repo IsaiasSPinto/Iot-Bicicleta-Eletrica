@@ -1,19 +1,36 @@
-import React from 'react';
 import { database } from './services/firebase';
-import firebase from "firebase/app";
+import { ref, set} from "firebase/database";
+import { useState } from 'react';
+
 
 function App() {
-  const LedStatus = ref(database, 'ledStatus/');
-    onValue(LedStatus, (snapshot) => {
-    const data = snapshot.val();
+  
+  const [ledOn, setLedOn] = useState(0)
 
-    update(ref(db, 'ledStatus/' ),{
-      status : ! data.status
-    })
-});
+
+  function checkDb(){
+
+    if(ledOn == 1){
+      set(ref(database, 'ledStatus'), {
+        led : 0
+      })
+      setLedOn(0)
+    }
+
+    if(ledOn == 0) {
+      set(ref(database, 'ledStatus'), {
+        led : 1
+      })
+
+      setLedOn(1)
+    }
+
+  }
 
   return (
-   <h1>aaa</h1>
+    <>
+      <button onClick={checkDb}>aaa</button>
+    </>
   );
 }
 

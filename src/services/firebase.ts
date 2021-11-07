@@ -1,15 +1,17 @@
-import { initializeApp } from 'firebase/app';
+
 import { getDatabase } from "firebase/database";
+import * as firebase from 'firebase/app';
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBSI4B1pwhQxLMs5RP-KeJlUh0k4MI5zvE",
-  authDomain: "bici-81f1b.firebaseapp.com",
-  databaseURL: "https://bici-81f1b-default-rtdb.firebaseio.com/",
-  storageBucket: "bici-81f1b.appspot.com"
-};
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET
+}
+const app = firebase.initializeApp(firebaseConfig);
 
-const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
-
-export const database = getDatabase(app);
+export {database}
