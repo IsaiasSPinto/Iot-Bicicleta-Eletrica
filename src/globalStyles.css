@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body { background-color: #333;}
+
+h1,h2 , button{
+    font-family: 'Montserrat';
+    font-weight: bold
+}
+
+span {font-family: 'Roboto';}
+
+button {
+    cursor: pointer;
+    border: 0
+}
+
+@media (max-width: 720px) {
+    html {
+        font-size: 87.5%; 
+    }
+    
+}
+
